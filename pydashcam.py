@@ -40,7 +40,7 @@ def record_video_segment(save_directory="", segment_duration=60):
         elapsed_time = 0
         fourcc = cv2.VideoWriter_fourcc(*'XVID')  # XVID codec (raw video)
         out = cv2.VideoWriter(raw_filename, fourcc, fps, (640, 480))
-        
+        print(f"{raw_filename} recording started.")
         while elapsed_time < segment_duration:
             ret, frame = cap.read()
             if not ret:
@@ -67,6 +67,7 @@ def record_video_segment(save_directory="", segment_duration=60):
             
             # save frame 
             out.write(frame) 
+            
             # Save a frame every 1 second
             elapsed_time = time.time() - start_time
             '''
